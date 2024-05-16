@@ -125,12 +125,12 @@ export default function Home() {
       <div className="text-center mt-4">
         {isConnected ? (
           hasClaimed ? (
-            <p>You've already claimed your airdrop!</p>
+            <p>You&apos;ve already claimed your airdrop!</p>
           ) : (
             isEligible ? (
-              <p>Congrats! You're eligible to claim {userData.amount} $btc</p>
+              <p>Congrats! You&apos;re eligible to claim {userData.amount} $btc</p>
             ) : (
-              <p>You're not eligible for an airdrop</p>
+              <p>You&apos;re not eligible for an airdrop</p>
             )
           )
         ) : (
