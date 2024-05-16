@@ -83,22 +83,11 @@ export default function Home() {
     abi: claim_contract_ABI,
     functionName: 'claim',
     args: userData ? [address, userData.amount, formatProof(userData.proof.split(','))] : undefined,
-    account: address,
-    enabled: !!userData
+    account: address
   });
 
   const { write: claimAirdrop } = useWriteContract();
 
-  const handleClaim = () => {
-    if (isEligible && !hasClaimed && simulateClaimAirdrop) {
-      claimAirdrop({
-        args: [address, userData.amount, formatProof(userData.proof.split(','))],
-        address: claim_contract_address,
-        abi: claim_contract_ABI,
-        functionName: 'claim'
-      });
-    }
-  };
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -161,7 +150,7 @@ export default function Home() {
       {isConnected && <Button
         variant="solid"
         isDisabled={!isEligible || hasClaimed}
-        onClick={handleClaim}
+        onClick={() => claimAirdrop(simulateClaimAirdrop?.request)}
         className="mt-4"
       >
         Claim
