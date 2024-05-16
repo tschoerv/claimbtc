@@ -109,8 +109,8 @@ export default function Home() {
       <Link href={`https://www.firsterc20memecoin.com/`} isExternal>
         <Image
           src="/bitcoin_logo.png"
-          width={400}
-          height={400}
+          width={350}
+          height={350}
           alt="bitcoin logo"
         />
       </Link>
@@ -166,6 +166,40 @@ export default function Home() {
       >
         Claim
       </Button>}
+
+      <div className='flex flex-row bg-bitcoinorange gap-5 p-3 pl-7 pr-7 rounded-xl mt-4'>
+        <Link href={`https://etherscan.io/address/0xbA51047a91d5bF6b86777A594D1714E8a337D120`} isExternal>
+          <Image
+            src="/etherscan.png"
+            width={29}
+            height={29}
+            alt="etherscan"
+          /></Link>
+        <Link href={`https://github.com/tschoerv/claimbtc`} isExternal>
+          <Image
+            src="/github.png"
+            width={30}
+            height={30}
+            alt="github"
+          /></Link>
+        <Link href={`https://discord.com/invite/7pbcDYqY3a`} isExternal>
+          <Image
+            src="/discord.png"
+            width={30}
+            height={30}
+            alt="discord"
+          /></Link>
+        <Link href={`https://twitter.com/FirstERC20meme`} isExternal>
+          <Image
+            src="/twitter.png"
+            width={30}
+            height={30}
+            alt="x"
+          /></Link>
+      </div>
+      <div className='flex flex-row mt-1'>
+      <p>made by&nbsp;</p> <Link href={`https://twitter.com/tschoerv`} isExternal>tschoerv.eth</Link> <p>&nbsp;- donations welcome!</p>
+      </div>
     </main>
   );
 }
