@@ -20,10 +20,6 @@ export default function Home() {
   const [manualAddress, setManualAddress] = useState("");
   const [manualCheck, setManualCheck] = useState(false);
 
-  useEffect(() => {
-    reconnect(config, { connectors: [injected()] });
-  }, []);
-
   const claim_contract_address = process.env.NEXT_PUBLIC_CLAIM_CONTRACT_ADDRESS;
 
   const { address, isConnected, chain } = useAccount();
@@ -75,18 +71,20 @@ export default function Home() {
 
   const formatProof = (proof) => {
     if (!Array.isArray(proof)) return [];
-    return proof.map(p => `0x${p}`);
+    return proof.map(p => `${p}`);
   };
 
-  const { data: simulateClaimAirdrop, error: simulateError } = useSimulateContract({
+  const { data: simulateClaimAirdrop } = useSimulateContract({
     address: claim_contract_address,
     abi: claim_contract_ABI,
     functionName: 'claim',
     args: userData ? [address, userData.amount, formatProof(userData.proof.split(','))] : undefined,
-    account: address
+    account: address,
   });
 
-  const { write: claimAirdrop } = useWriteContract();
+  const { writeContract: claimAirdrop } = useWriteContract();
+
+
 
 
   return (
