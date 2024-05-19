@@ -33,9 +33,7 @@ export function Providers({ children }) {
       <QueryClientProvider client={client}>
         <RainbowKitProvider>
         <NextUIProvider>
-        <main className="text-foreground bg-background">
         {mounted && children}
-        </main>
         </NextUIProvider>
         </RainbowKitProvider>
         </QueryClientProvider>
