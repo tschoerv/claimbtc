@@ -7,7 +7,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useWriteContract, useSwitchChain, useSimulateContract, useAccount, useReadContract } from "wagmi";
 
-import round2_whitelist from "./ABI/ROUND2-WHITELIST.json";
+import round3_whitelist from "./ABI/ROUND3-WHITELIST.json";
 import claim_contract_ABI from "./ABI/claim_contract_ABI.json";
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isConnected && address) {
-      const user = round2_whitelist.find(user => user.address.toLowerCase() === address.toLowerCase());
+      const user = round3_whitelist.find(user => user.address.toLowerCase() === address.toLowerCase());
       if (user) {
         setIsEligible(true);
         setUserData(user);
@@ -43,7 +43,7 @@ export default function Home() {
   }, [address, isConnected]);
 
   const handleManualCheck = () => {
-    const user = round2_whitelist.find(user => user.address.toLowerCase() === manualAddress.toLowerCase());
+    const user = round3_whitelist.find(user => user.address.toLowerCase() === manualAddress.toLowerCase());
     if (user) {
       setIsEligible(true);
       setUserData(user);
@@ -65,7 +65,7 @@ export default function Home() {
 
   useEffect(() => {
     if (checkTriggered && isConnected && isSuccessReadHasClaimed && readHasClaimed !== undefined) {
-      setHasClaimed(parseInt(readHasClaimed) > 1);
+      setHasClaimed(parseInt(readHasClaimed) > 2);
       setCheckTriggered(false); // Reset the check trigger after the check is completed
     }
   }, [readHasClaimed, isSuccessReadHasClaimed, checkTriggered, isConnected]);
@@ -99,7 +99,7 @@ export default function Home() {
           alt="bitcoin logo"
         />
       </Link>
-      <h1 className='text-3xl mt-4'>Airdrop Round 2</h1>
+      <h1 className='text-3xl mt-4'>Airdrop Round 3</h1>
       <div className="text-center mt-4">
         {chain?.id !== desiredNetworkId && isConnected ? (
           <Button variant="solid" color="danger" onClick={handleSwitchChain}>Switch to Mainnet</Button>
